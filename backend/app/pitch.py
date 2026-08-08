@@ -155,7 +155,10 @@ Keep the email professional, persuasive, concise (under 250 words), and end with
         "site_location": site["location"],
         "customer_name": customer["name"],
         "quoted_rate_inr": int(site["monthly_rate_inr"]),
+        "suggested_rate": int(site["monthly_rate_inr"]),  # Frontend alias
         "pitch_text": pitch_text,
+        "pitch": pitch_text,  # Frontend alias
+        "reasons": reasons,  # Frontend alias
         "generated_by_ai": generated_by_ai,
         "grounding_facts": grounding_facts
     }

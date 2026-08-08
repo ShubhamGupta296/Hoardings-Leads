@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Leads Agent for Hoardings | Sales Admin Dashboard</title>
+  <meta name="description" content="AI-driven vacancy tracking, customer lead scoring, and personalized pitch generation for outdoor billboard advertising.">
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- TOP NAVIGATION & HEADER -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="brand-logo">
+          <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+            <path d="M7 8h10"></path>
+            <path d="M7 12h7"></path>
+          </svg>
+          <div class="brand-text">
+            <h1>Smart Leads Agent <span class="brand-badge">HOARDINGS</span></h1>
+            <p class="subtitle">DigiPlus IT Agentic AI Hackathon &bull; 90-Day Revenue &amp; Vacancy Intelligence</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="connection-status" id="connectionStatus" title="Click to toggle between backend & offline demo mode">
+          <span class="status-dot live" id="statusDot"></span>
+          <span class="status-label" id="statusText">Connecting to API...</span>
+          <button type="button" class="btn-toggle-demo" id="toggleDemoBtn">Switch Mode</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- METRICS SUMMARY BAR -->
+    <section class="metrics-bar">
+      <div class="metric-card" id="metricTotalVacancies">
+        <div class="metric-icon alert">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        </div>
+        <div class="metric-content">
+          <span class="metric-label">Vacancies (90 Days)</span>
+          <span class="metric-value" id="statVacanciesCount">--</span>
+          <span class="metric-subtext">Require immediate rebooking</span>
+        </div>
+      </div>
+
+      <div class="metric-card" id="metricRevenueRisk">
+        <div class="metric-icon danger">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        </div>
+        <div class="metric-content">
+          <span class="metric-label">Total Revenue at Risk</span>
+          <span class="metric-value text-danger" id="statRevenueRisk">--</span>
+          <span class="metric-subtext">Cumulative monthly vacant value</span>
+        </div>
+      </div>
+
+      <div class="metric-card" id="metricUrgentCount">
+        <div class="metric-icon warning">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        </div>
+        <div class="metric-content">
+          <span class="metric-label">Vacant &lt; 30 Days</span>
+          <span class="metric-value text-warning" id="statUrgentCount">--</span>
+          <span class="metric-subtext">High urgency action items</span>
+        </div>
+      </div>
+
+      <div class="metric-card" id="metricAvgRate">
+        <div class="metric-icon info">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+        </div>
+        <div class="metric-content">
+          <span class="metric-label">Avg. Site Monthly Rate</span>
+          <span class="metric-value text-info" id="statAvgRate">--</span>
+          <span class="metric-subtext">Across vacant portfolio</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 90-DAY VISUAL TIMELINE SECTION -->
+    <section class="timeline-container">
+      <div class="section-header">
+        <div class="section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          <h2>90-Day Billboard Vacancy Timeline</h2>
+        </div>
+        <span class="timeline-legend">
+          <span class="legend-item"><span class="legend-dot urgent"></span>0–30 Days (Urgent)</span>
+          <span class="legend-item"><span class="legend-dot upcoming"></span>31–60 Days</span>
+          <span class="legend-item"><span class="legend-dot future"></span>61–90 Days</span>
+        </span>
+      </div>
+
+      <div class="timeline-track-wrapper">
+        <div class="timeline-months-bar">
+          <div class="month-col">Month 1 (Next 30 Days)</div>
+          <div class="month-col">Month 2 (31–60 Days)</div>
+          <div class="month-col">Month 3 (61–90 Days)</div>
+        </div>
+        <div class="timeline-grid" id="timelineGrid">
+          <!-- Timeline bars rendered dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN TWO-COLUMN DASHBOARD CONTENT -->
+    <main class="dashboard-main">
+      
+      <!-- LEFT COLUMN: VACANCY LIST & CONTROLS -->
+      <section class="panel vacancy-panel">
+        <div class="panel-header">
+          <div class="panel-title-group">
+            <h3>Upcoming Vacancies</h3>
+            <span class="badge-count" id="vacancyListCount">0</span>
+          </div>
+
+          <!-- SEARCH & FILTERS -->
+          <div class="filter-controls">
+            <div class="search-input-box">
+              <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="searchInput" placeholder="Search location or site ID..." autocomplete="off">
+              <button type="button" class="btn-clear-search hidden" id="clearSearchBtn">&times;</button>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-label">Rate Band:</div>
+              <div class="chip-group" id="budgetBandFilters">
+                <button type="button" class="chip active" data-filter="all">All</button>
+                <button type="button" class="chip" data-filter="low">Low (&lt;₹150k)</button>
+                <button type="button" class="chip" data-filter="mid">Mid (₹150k–250k)</button>
+                <button type="button" class="chip" data-filter="high">High (&ge;₹250k)</button>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-label">Time Horizon:</div>
+              <div class="chip-group" id="urgencyFilters">
+                <button type="button" class="chip active" data-urgency="all">All (90d)</button>
+                <button type="button" class="chip" data-urgency="30">&le; 30 Days</button>
+                <button type="button" class="chip" data-urgency="60">31–60 Days</button>
+                <button type="button" class="chip" data-urgency="90">61–90 Days</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sort-info-bar">
+          <span class="sort-text">Sorted by: <strong>Free-from date (soonest first)</strong></span>
+          <span class="revenue-note">Showing revenue at risk for each billboard</span>
+        </div>
+
+        <div class="vacancy-list" id="vacancyList">
+          <!-- Dynamic vacancy cards render here -->
+          <div class="loading-spinner-box" id="vacancyLoading">
+            <div class="spinner"></div>
+            <p>Fetching vacant billboards...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: LEADS & SITE DETAIL PANEL -->
+      <section class="panel detail-panel" id="detailPanel">
+        
+        <!-- INITIAL EMPTY STATE -->
+        <div class="empty-detail-state" id="emptyDetailState">
+          <div class="empty-illustration">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M8 21h8"></path>
+              <path d="M12 17v4"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <h3>Select a Billboard Site</h3>
+          <p>Click any vacancy card on the left or timeline marker above to analyze site details and evaluate its top-3 recommended customer leads.</p>
+        </div>
+
+        <!-- ACTIVE SITE DETAIL CONTENT -->
+        <div class="active-detail-content hidden" id="activeDetailContent">
+          
+          <!-- SELECTED SITE HEADER CARD -->
+          <div class="selected-site-card" id="selectedSiteCard">
+            <div class="site-card-top">
+              <div class="site-title-area">
+                <span class="site-id-tag" id="selectedSiteId">SITE-000</span>
+                <h2 class="site-location-name" id="selectedSiteLocation">Site Location</h2>
+              </div>
+              <div class="site-rate-pill">
+                <span class="rate-label">Monthly Rate</span>
+                <span class="rate-amount" id="selectedSiteRate">₹0</span>
+              </div>
+            </div>
+
+            <div class="site-specs-grid">
+              <div class="spec-item">
+                <span class="spec-label">Dimensions / Size</span>
+                <span class="spec-val" id="selectedSiteSize">-- sqft</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Traffic Score</span>
+                <span class="spec-val highlight" id="selectedSiteTraffic">-- / 10</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Free From Date</span>
+                <span class="spec-val text-warning" id="selectedSiteFreeFrom">--</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Revenue at Risk</span>
+                <span class="spec-val text-danger" id="selectedSiteRevenueRisk">--</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- TOP 3 LEADS SECTION -->
+          <div class="leads-section">
+            <div class="leads-section-header">
+              <div class="leads-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <h3>Top-3 Best-Fit Customer Leads</h3>
+              </div>
+              <span class="leads-subtitle">Data-backed scoring based on booking history, budget match &amp; relationship</span>
+            </div>
+
+            <div class="leads-loading hidden" id="leadsLoading">
+              <div class="spinner"></div>
+              <p>Analyzing customer booking history &amp; affinity models...</p>
+            </div>
+
+            <div class="leads-cards-container" id="leadsContainer">
+              <!-- Lead cards rendered dynamically -->
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- AI PITCH GENERATOR MODAL -->
+    <div class="modal-backdrop hidden" id="pitchModal">
+      <div class="modal-window">
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <div class="sparkle-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+            </div>
+            <div>
+              <h3 id="pitchModalTitle">AI-Generated Personalised Pitch Draft</h3>
+              <p class="modal-subtitle" id="pitchModalSubtitle">Tailored proposal based on site stats and client profile</p>
+            </div>
+          </div>
+          <button type="button" class="modal-close-btn" id="closePitchModalBtn">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="pitch-loading hidden" id="pitchLoading">
+            <div class="spinner"></div>
+            <p>Synthesizing pitch with site stats, traffic score &amp; client fit reasoning...</p>
+          </div>
+
+          <div class="pitch-content-wrapper" id="pitchContentWrapper">
+            
+            <!-- SUGGESTED RATE HIGHLIGHT BANNER -->
+            <div class="suggested-rate-box">
+              <div class="rate-info">
+                <span class="box-label">RECOMMENDED MONTHLY RATE</span>
+                <div class="rate-number" id="pitchSuggestedRate">₹0</div>
+              </div>
+              <div class="rate-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Budget Band Aligned
+              </div>
+            </div>
+
+            <!-- KEY REASONS TAGS -->
+            <div class="pitch-reasons-box">
+              <span class="box-label">KEY PITCH VALUE PROPOSITIONS</span>
+              <ul class="pitch-reasons-list" id="pitchReasonsList">
+                <!-- Reasons bullets -->
+              </ul>
+            </div>
+
+            <!-- EMAIL PITCH BODY -->
+            <div class="pitch-text-box">
+              <div class="pitch-text-header">
+                <span>GENERATED EMAIL DRAFT</span>
+                <span class="editable-badge">Editable</span>
+              </div>
+              <textarea class="pitch-textarea" id="pitchTextArea" rows="11" spellcheck="false"></textarea>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancelPitchBtn">Close</button>
+          <button type="button" class="btn btn-primary" id="copyPitchBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copy Pitch to Clipboard
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast hidden" id="toast">
+      <svg class="toast-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <span id="toastMessage">Copied pitch to clipboard!</span>
+    </div>
+
+  </div>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>

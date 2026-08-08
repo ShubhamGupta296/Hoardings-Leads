@@ -188,11 +188,13 @@ def calculate_lead_scores(
         lead_dict = {
             "customer_id": cust_id,
             "customer_name": cust_name,
+            "name": cust_name,  # Frontend alias
             "industry": cust_industry,
             "budget_band": cust_budget_band,
             "relationship_score": rel_score,
             "last_contact_date": last_contact_str,
             "total_score": total_score,
+            "score": total_score,  # Frontend alias
             "is_disqualified": is_disqualified,
             "disqualification_reason": disqualification_reason,
             "breakdown": breakdown,
