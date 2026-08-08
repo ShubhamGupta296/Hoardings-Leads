@@ -2,15 +2,10 @@
  * Smart Leads Agent for Hoardings - Frontend Dashboard Logic
  * DigiPlus IT Agentic AI Hackathon
  * 
- * Strict compliance with fixed API Contract:
+ * Compliant with Backend API Contract & Local Demo Mode:
  * - GET /api/vacancies
  * - GET /api/leads/{site_id}
  * - POST /api/pitch  { site_id, customer_id }
- * 
- * Grounded directly in real CSV dataset:
- * - hoardings.csv (HRD-100 to HRD-124)
- * - customers.csv (CUST-30 to CUST-49, low/mid/high, real industries)
- * - bookings.csv (B-2201 to B-2249)
  */
 
 (function () {
@@ -58,29 +53,29 @@
     ],
     leadsDatabase: {
       "HRD-122": [
-        { customer_id: "CUST-38", name: "Prime Autos", industry: "retail", budget_band: "high", score: 95, reasons: ["✅ High budget band aligns with ₹400,000/mo premium rate (+25 pts)", "✅ Previous booking history at SV Road Junction Borivali (+20 pts)", "✅ Retail sector top historical rebooking affinity (+15 pts)", "✅ Strong relationship score: 7/10 (+20 pts)", "✅ Contacted recently (+15 pts)"] },
-        { customer_id: "CUST-49", name: "ZenCare Clinics", industry: "automotive", budget_band: "high", score: 88, reasons: ["✅ High budget band fits premium site (+25 pts)", "✅ Automotive sector high visibility preference (+15 pts)", "✅ Relationship score: 7/10 (+20 pts)", "✅ Solid client booking volume (+15 pts)"] },
-        { customer_id: "CUST-40", name: "Shine Jewels", industry: "fmcg", budget_band: "high", score: 82, reasons: ["✅ High budget band fit (+25 pts)", "✅ FMCG industry affinity for high-traffic billboard (+15 pts)", "✅ Relationship score: 5/10 (+15 pts)", "✅ High renewal probability (+15 pts)"] }
+        { customer_id: "CUST-38", customer_name: "Prime Autos", industry: "retail", budget_band: "high", total_score: 95.0, reasons: ["✅ High budget band aligns with ₹400,000/mo premium rate (+25 pts)", "✅ Previous booking history at SV Road Junction Borivali (+20 pts)", "✅ Retail sector top historical rebooking affinity (+15 pts)", "✅ Strong relationship score: 7/10 (+20 pts)", "✅ Contacted recently (+15 pts)"] },
+        { customer_id: "CUST-49", customer_name: "ZenCare Clinics", industry: "automotive", budget_band: "high", total_score: 88.0, reasons: ["✅ High budget band fits premium site (+25 pts)", "✅ Automotive sector high visibility preference (+15 pts)", "✅ Relationship score: 7/10 (+20 pts)", "✅ Solid client booking volume (+15 pts)"] },
+        { customer_id: "CUST-40", customer_name: "Shine Jewels", industry: "fmcg", budget_band: "high", total_score: 82.0, reasons: ["✅ High budget band fit (+25 pts)", "✅ FMCG industry affinity for high-traffic billboard (+15 pts)", "✅ Relationship score: 5/10 (+15 pts)", "✅ High renewal probability (+15 pts)"] }
       ],
       "HRD-118": [
-        { customer_id: "CUST-47", name: "NovaBikes", industry: "real_estate", budget_band: "mid", score: 94, reasons: ["✅ Prior booking history at Sion Circle location (+20 pts)", "✅ Mid budget band matches site ₹250k/mo rate (+25 pts)", "✅ Excellent Relationship score: 9/10 (+20 pts)", "✅ Real estate ad campaign fit (+15 pts)", "✅ Recency of last contact (+14 pts)"] },
-        { customer_id: "CUST-43", name: "PixelWorld TV", industry: "healthcare", budget_band: "mid", score: 87, reasons: ["✅ Latest site customer history (+20 pts)", "✅ Mid budget band match (+25 pts)", "✅ Healthcare location affinity (+15 pts)", "✅ Relationship score: 4/10 (+15 pts)"] },
-        { customer_id: "CUST-30", name: "SunGold Jewellers", industry: "retail", budget_band: "mid", score: 81, reasons: ["✅ Mid budget band tier (+25 pts)", "✅ Retail jewellery campaign fit (+15 pts)", "✅ Relationship score: 6/10 (+18 pts)", "✅ Active repeat client (+13 pts)"] }
+        { customer_id: "CUST-47", customer_name: "NovaBikes", industry: "real_estate", budget_band: "mid", total_score: 94.0, reasons: ["✅ Prior booking history at Sion Circle location (+20 pts)", "✅ Mid budget band matches site ₹250k/mo rate (+25 pts)", "✅ Excellent Relationship score: 9/10 (+20 pts)", "✅ Real estate ad campaign fit (+15 pts)", "✅ Recency of last contact (+14 pts)"] },
+        { customer_id: "CUST-43", customer_name: "PixelWorld TV", industry: "healthcare", budget_band: "mid", total_score: 87.0, reasons: ["✅ Latest site customer history (+20 pts)", "✅ Mid budget band match (+25 pts)", "✅ Healthcare location affinity (+15 pts)", "✅ Relationship score: 4/10 (+15 pts)"] },
+        { customer_id: "CUST-30", customer_name: "SunGold Jewellers", industry: "retail", budget_band: "mid", total_score: 81.0, reasons: ["✅ Mid budget band tier (+25 pts)", "✅ Retail jewellery campaign fit (+15 pts)", "✅ Relationship score: 6/10 (+18 pts)", "✅ Active repeat client (+13 pts)"] }
       ],
       "HRD-103": [
-        { customer_id: "CUST-35", name: "CarePlus Hospitals", industry: "healthcare", budget_band: "low", score: 90, reasons: ["✅ Latest booking history on WEH Goregaon site (+20 pts)", "✅ Healthcare local footprint (+15 pts)", "✅ Portfolio booking volume (+15 pts)", "✅ Relationship score: 4/10 (+15 pts)", "✅ High renewal affinity (+15 pts)"] },
-        { customer_id: "CUST-30", name: "SunGold Jewellers", industry: "retail", budget_band: "mid", score: 84, reasons: ["✅ Mid budget band match for ₹250k site (+25 pts)", "✅ Retail sector highway visibility (+15 pts)", "✅ Relationship score: 6/10 (+18 pts)", "✅ Recent contact logged (+16 pts)"] },
-        { customer_id: "CUST-48", name: "BrightFuture Edu", industry: "fmcg", budget_band: "low", score: 79, reasons: ["✅ Excellent relationship score: 9/10 (+20 pts)", "✅ Education/FMCG campaign affinity (+15 pts)", "✅ Past WEH hoarding bookings (+14 pts)"] }
+        { customer_id: "CUST-35", customer_name: "CarePlus Hospitals", industry: "healthcare", budget_band: "low", total_score: 90.0, reasons: ["✅ Latest booking history on WEH Goregaon site (+20 pts)", "✅ Healthcare local footprint (+15 pts)", "✅ Portfolio booking volume (+15 pts)", "✅ Relationship score: 4/10 (+15 pts)", "✅ High renewal affinity (+15 pts)"] },
+        { customer_id: "CUST-30", customer_name: "SunGold Jewellers", industry: "retail", budget_band: "mid", total_score: 84.0, reasons: ["✅ Mid budget band match for ₹250k site (+25 pts)", "✅ Retail sector highway visibility (+15 pts)", "✅ Relationship score: 6/10 (+18 pts)", "✅ Recent contact logged (+16 pts)"] },
+        { customer_id: "CUST-48", customer_name: "BrightFuture Edu", industry: "fmcg", budget_band: "low", total_score: 79.0, reasons: ["✅ Excellent relationship score: 9/10 (+20 pts)", "✅ Education/FMCG campaign affinity (+15 pts)", "✅ Past WEH hoarding bookings (+14 pts)"] }
       ],
       "HRD-106": [
-        { customer_id: "CUST-38", name: "Prime Autos", industry: "retail", budget_band: "high", score: 96, reasons: ["✅ High budget band fits ₹400,000/mo rate (+25 pts)", "✅ Thane Ghodbunder corridor high traffic preference (+15 pts)", "✅ Relationship score: 7/10 (+20 pts)", "✅ Strong payment history (+20 pts)", "✅ Active enquiry logged (+16 pts)"] },
-        { customer_id: "CUST-49", name: "ZenCare Clinics", industry: "automotive", budget_band: "high", score: 89, reasons: ["✅ High budget band tier (+25 pts)", "✅ Automotive sector highway billboard preference (+15 pts)", "✅ Relationship score: 7/10 (+20 pts)", "✅ Last contact 3 weeks ago (+14 pts)"] },
-        { customer_id: "CUST-40", name: "Shine Jewels", industry: "fmcg", budget_band: "high", score: 83, reasons: ["✅ High budget band tier (+25 pts)", "✅ FMCG brand high visibility campaign (+15 pts)", "✅ Relationship score: 5/10 (+15 pts)"] }
+        { customer_id: "CUST-38", customer_name: "Prime Autos", industry: "retail", budget_band: "high", total_score: 96.0, reasons: ["✅ High budget band fits ₹400,000/mo rate (+25 pts)", "✅ Thane Ghodbunder corridor high traffic preference (+15 pts)", "✅ Relationship score: 7/10 (+20 pts)", "✅ Strong payment history (+20 pts)", "✅ Active enquiry logged (+16 pts)"] },
+        { customer_id: "CUST-49", customer_name: "ZenCare Clinics", industry: "automotive", budget_band: "high", total_score: 89.0, reasons: ["✅ High budget band tier (+25 pts)", "✅ Automotive sector highway billboard preference (+15 pts)", "✅ Relationship score: 7/10 (+20 pts)", "✅ Last contact 3 weeks ago (+14 pts)"] },
+        { customer_id: "CUST-40", customer_name: "Shine Jewels", industry: "fmcg", budget_band: "high", total_score: 83.0, reasons: ["✅ High budget band tier (+25 pts)", "✅ FMCG brand high visibility campaign (+15 pts)", "✅ Relationship score: 5/10 (+15 pts)"] }
       ],
       "DEFAULT": [
-        { customer_id: "CUST-38", name: "Prime Autos", industry: "retail", budget_band: "high", score: 89, reasons: ["✅ High budget band alignment (+25 pts)", "✅ Strong portfolio history across Mumbai hoardings (+15 pts)", "✅ Relationship score: 7/10 (+20 pts)", "✅ Active campaign enquiry (+14 pts)"] },
-        { customer_id: "CUST-30", name: "SunGold Jewellers", industry: "retail", budget_band: "mid", score: 84, reasons: ["✅ Mid budget band alignment (+25 pts)", "✅ Retail industry billboard affinity (+15 pts)", "✅ Relationship score: 6/10 (+18 pts)", "✅ Consistent client (+16 pts)"] },
-        { customer_id: "CUST-48", name: "BrightFuture Edu", industry: "fmcg", budget_band: "low", score: 78, reasons: ["✅ High relationship score: 9/10 (+20 pts)", "✅ Regional campaign history (+15 pts)", "✅ High response probability (+13 pts)"] }
+        { customer_id: "CUST-38", customer_name: "Prime Autos", industry: "retail", budget_band: "high", total_score: 89.0, reasons: ["✅ High budget band alignment (+25 pts)", "✅ Strong portfolio history across Mumbai hoardings (+15 pts)", "✅ Relationship score: 7/10 (+20 pts)", "✅ Active campaign enquiry (+14 pts)"] },
+        { customer_id: "CUST-30", customer_name: "SunGold Jewellers", industry: "retail", budget_band: "mid", total_score: 84.0, reasons: ["✅ Mid budget band alignment (+25 pts)", "✅ Retail industry billboard affinity (+15 pts)", "✅ Relationship score: 6/10 (+18 pts)", "✅ Consistent client (+16 pts)"] },
+        { customer_id: "CUST-48", customer_name: "BrightFuture Edu", industry: "fmcg", budget_band: "low", total_score: 78.0, reasons: ["✅ High relationship score: 9/10 (+20 pts)", "✅ Regional campaign history (+15 pts)", "✅ High response probability (+13 pts)"] }
       ]
     }
   };
@@ -218,7 +213,8 @@
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       
       const data = await response.json();
-      state.vacancies = data.vacancies || [];
+      // Handle both List[VacancyResponse] bare array AND { vacancies: [...] }
+      state.vacancies = Array.isArray(data) ? data : (data.vacancies || []);
       state.isDemoMode = false;
       
       elements.statusDot.className = 'status-dot live';
@@ -276,12 +272,13 @@
     if (state.isDemoMode) {
       setTimeout(() => {
         const site = state.selectedSite || { location: 'Location', monthly_rate_inr: 250000, size_sqft: 600, traffic_score: 8.5 };
-        const lead = state.leads.find(l => l.customer_id === customerId) || { name: 'Client', industry: 'retail' };
+        const lead = state.leads.find(l => l.customer_id === customerId) || { customer_name: 'Client', name: 'Client', industry: 'retail' };
+        const clientName = lead.customer_name || lead.name || 'Client';
         
         const mockPitch = {
-          suggested_rate: site.monthly_rate_inr,
-          reasons: lead.reasons || ["✅ Proven category match", "✅ Premium location visibility"],
-          pitch: `Subject: Exclusive Outdoor Branding Rights: Billboard at ${site.location} (${site.site_id})\n\nDear ${lead.name} Team,\n\nI hope this email finds you well.\n\nWe are pleased to offer your team first-right-of-refusal for our flagship high-visibility billboard located at ${site.location}.\n\nKEY SITE HIGHLIGHTS:\n- Site ID: ${site.site_id}\n- Location: ${site.location}\n- Dimensions: ${site.size_sqft} sq.ft.\n- Daily Traffic Score: ${site.traffic_score}/10\n- Special Suggested Rate: ${formatCurrency(site.monthly_rate_inr)} / month (Aligned with your ${formatIndustryName(lead.industry)} budget band)\n\nGiven your strong campaign profile, this site represents an extraordinary fit for your upcoming brand awareness push.\n\nThis location falls vacant on ${formatDateString(site.free_from)}. Shall we lock this slot in for your upcoming campaign?\n\nBest regards,\nSales Team | Smart Hoardings Agent`
+          quoted_rate_inr: site.monthly_rate_inr,
+          reasons: lead.reasons || ["✅ Category affinity match", "✅ Premium location visibility"],
+          pitch_text: `Subject: Exclusive Outdoor Branding Rights: Billboard at ${site.location} (${site.site_id})\n\nDear ${clientName} Team,\n\nI hope this email finds you well.\n\nWe are pleased to offer your team first-right-of-refusal for our flagship high-visibility billboard located at ${site.location}.\n\nKEY SITE HIGHLIGHTS:\n- Site ID: ${site.site_id}\n- Location: ${site.location}\n- Dimensions: ${site.size_sqft} sq.ft.\n- Daily Traffic Score: ${site.traffic_score}/10\n- Special Suggested Rate: ${formatCurrency(site.monthly_rate_inr)} / month (Aligned with your ${formatIndustryName(lead.industry)} budget band)\n\nGiven your strong campaign profile, this site represents an extraordinary fit for your upcoming brand awareness push.\n\nThis location falls vacant on ${formatDateString(site.free_from)}. Shall we lock this slot in for your upcoming campaign?\n\nBest regards,\nSales Team | Smart Hoardings Agent`
         };
 
         renderPitchModal(lead, mockPitch);
@@ -301,18 +298,19 @@
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
       const data = await response.json();
-      const lead = state.leads.find(l => l.customer_id === customerId) || { name: 'Client' };
+      const lead = state.leads.find(l => l.customer_id === customerId) || { customer_name: 'Client', name: 'Client' };
       
       renderPitchModal(lead, data);
     } catch (err) {
       console.warn('Failed to fetch AI pitch from server, using template:', err.message);
       const site = state.selectedSite || { location: 'Location', monthly_rate_inr: 250000, size_sqft: 600, traffic_score: 8.5 };
-      const lead = state.leads.find(l => l.customer_id === customerId) || { name: 'Client', industry: 'retail' };
+      const lead = state.leads.find(l => l.customer_id === customerId) || { customer_name: 'Client', name: 'Client', industry: 'retail' };
+      const clientName = lead.customer_name || lead.name || 'Client';
       
       const fallbackPitch = {
-        suggested_rate: site.monthly_rate_inr,
+        quoted_rate_inr: site.monthly_rate_inr,
         reasons: lead.reasons || ["✅ Budget band aligned", "✅ Historical affinity"],
-        pitch: `Subject: Proposal for Hoarding Site ${site.site_id} (${site.location})\n\nDear ${lead.name},\n\nWe have an upcoming vacant billboard at ${site.location} available starting ${formatDateString(site.free_from)}.\n\nSite Specs:\n- Dimensions: ${site.size_sqft} sqft\n- Traffic Index: ${site.traffic_score}/10\n- Offered Rate: ${formatCurrency(site.monthly_rate_inr)} / month\n\nPlease let us know if you would like to reserve this site.`
+        pitch_text: `Subject: Proposal for Hoarding Site ${site.site_id} (${site.location})\n\nDear ${clientName},\n\nWe have an upcoming vacant billboard at ${site.location} available starting ${formatDateString(site.free_from)}.\n\nSite Specs:\n- Dimensions: ${site.size_sqft} sqft\n- Traffic Index: ${site.traffic_score}/10\n- Offered Rate: ${formatCurrency(site.monthly_rate_inr)} / month\n\nPlease let us know if you would like to reserve this site.`
       };
       renderPitchModal(lead, fallbackPitch);
     } finally {
@@ -527,6 +525,10 @@
       const card = document.createElement('div');
       card.className = 'lead-card';
 
+      const custName = lead.customer_name || lead.name || 'Customer';
+      const rawScore = lead.total_score !== undefined ? lead.total_score : (lead.score !== undefined ? lead.score : 0);
+      const fitScore = Math.round(rawScore);
+
       const reasonsHtml = (lead.reasons || [])
         .map(reason => `<li><span class="reason-check">&#10003;</span> ${reason}</li>`)
         .join('');
@@ -535,7 +537,7 @@
         <div class="lead-header">
           <div class="lead-rank-badge">#${index + 1}</div>
           <div class="lead-info">
-            <h4 class="lead-name">${lead.name}</h4>
+            <h4 class="lead-name">${custName}</h4>
             <div class="lead-tags">
               <span class="tag-industry">${formatIndustryName(lead.industry)}</span>
               <span class="tag-budget ${(lead.budget_band || 'mid').toLowerCase()}">
@@ -544,7 +546,7 @@
             </div>
           </div>
           <div class="lead-score-box">
-            <span class="score-number">${lead.score}%</span>
+            <span class="score-number">${fitScore}%</span>
             <span class="score-label">Fit Score</span>
           </div>
         </div>
@@ -577,17 +579,26 @@
   function renderPitchModal(lead, pitchData) {
     state.currentPitch = pitchData;
 
-    elements.pitchModalTitle.textContent = `AI Pitch Draft: ${lead.name}`;
+    const clientName = pitchData.customer_name || lead.customer_name || lead.name || 'Client';
+    const rateVal = pitchData.quoted_rate_inr || pitchData.suggested_rate || (state.selectedSite ? state.selectedSite.monthly_rate_inr : 0);
+    const pitchText = pitchData.pitch_text || pitchData.pitch || '';
+
+    elements.pitchModalTitle.textContent = `AI Pitch Draft: ${clientName}`;
     elements.pitchModalSubtitle.textContent = `Site: ${state.selectedSite ? state.selectedSite.location : ''} (${state.selectedSiteId})`;
-    elements.pitchSuggestedRate.textContent = formatCurrency(pitchData.suggested_rate);
+    elements.pitchSuggestedRate.textContent = formatCurrency(rateVal);
 
     // Value propositions list
-    elements.pitchReasonsList.innerHTML = (pitchData.reasons || [])
+    const reasons = pitchData.reasons || (lead ? lead.reasons : null) || [
+      `✅ Location Match: ${state.selectedSite ? state.selectedSite.location : 'Prime Location'}`,
+      `✅ Rate Card Aligned: ${formatCurrency(rateVal)} / month`
+    ];
+
+    elements.pitchReasonsList.innerHTML = reasons
       .map(r => `<li>${r}</li>`)
       .join('');
 
     // Pitch email textarea
-    elements.pitchTextArea.value = pitchData.pitch || '';
+    elements.pitchTextArea.value = pitchText;
   }
 
   // Attach Event Listeners
