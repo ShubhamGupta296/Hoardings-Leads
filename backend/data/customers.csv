@@ -1,0 +1,31 @@
+customer_id,name,industry,budget_band,relationship_score,last_contact_date
+CUST_001,Raymond Lifestyle Ltd,Retail,high,9,2026-08-01
+CUST_002,HDFC Bank Media Corp,Financial Services,high,10,2026-07-28
+CUST_003,Zomato Hyperpure,Tech,high,8,2026-08-03
+CUST_004,Lodha Luxury Developers,Real Estate,high,9,2026-07-25
+CUST_005,Maruti Suzuki Arena,Automobile,high,8,2026-07-30
+CUST_006,Tanishq Jewellery India,Retail,high,9,2026-08-02
+CUST_007,Amul Dairy Co-operative,FMCG,high,7,2026-07-15
+CUST_008,Fortis Healthcare West,Healthcare,mid,8,2026-07-20
+CUST_009,NMIMS University Mumbai,Education,mid,6,2026-07-10
+CUST_010,Pepperfry Furniture,Retail,mid,7,2026-08-04
+CUST_011,Shoppers Stop India,Retail,mid,8,2026-07-29
+CUST_012,Mahindra Auto Sales,Automobile,mid,7,2026-07-18
+CUST_013,Oberoi Realty Projects,Real Estate,high,9,2026-08-05
+CUST_014,Swiggy Instamart,Tech,high,8,2026-07-31
+CUST_015,Britannia Industries,FMCG,mid,6,2026-07-05
+CUST_016,Reliance Digital,Retail,high,9,2026-08-06
+CUST_017,Kalyan Jewellers,Retail,mid,7,2026-07-22
+CUST_018,Local Organic Mart,Retail,low,5,2026-06-15
+CUST_019,City Fitness Gyms,Healthcare,low,6,2026-07-01
+CUST_020,Metro Coaching Institute,Education,low,4,2026-06-20
+CUST_021,Suburban Real Estate Agency,Real Estate,low,5,2026-07-08
+CUST_022,QuickBite Fast Food,FMCG,low,4,2026-06-10
+CUST_023,Lenskart Solutions,Retail,mid,8,2026-08-02
+CUST_024,Tata Motors Passenger,Automobile,high,9,2026-07-27
+CUST_025,ICICI Prudential AMC,Financial Services,mid,8,2026-07-24
+CUST_026,Kundan Crafts & Gifts,Retail,low,3,2026-05-15
+CUST_027,TechSpark Academy,Education,low,5,2026-06-30
+CUST_028,Apollo Pharmacy Retail,Healthcare,mid,7,2026-07-14
+CUST_029,Runwal Developers,Real Estate,mid,8,2026-07-26
+CUST_030,Zepto 10Min Grocery,Tech,high,9,2026-08-04
