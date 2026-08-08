@@ -48,7 +48,8 @@ def get_upcoming_vacancies(
                 "free_from": ref_date.strftime("%Y-%m-%d"),
                 "days_until_vacant": 0,
                 "current_occupant_id": None,
-                "current_occupant_name": None
+                "current_occupant_name": None,
+                "revenue_at_risk": int(hoarding["monthly_rate_inr"])
             })
             continue
 
@@ -95,7 +96,8 @@ def get_upcoming_vacancies(
                 "free_from": free_from_dt.strftime("%Y-%m-%d"),
                 "days_until_vacant": days_until,
                 "current_occupant_id": occupant_id,
-                "current_occupant_name": occupant_name
+                "current_occupant_name": occupant_name,
+                "revenue_at_risk": int(hoarding["monthly_rate_inr"])
             })
 
     # Sort vacancies by days_until_vacant ascending

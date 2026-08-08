@@ -41,6 +41,7 @@ class VacancyResponse(BaseModel):
     days_until_vacant: int
     current_occupant_id: Optional[str] = None
     current_occupant_name: Optional[str] = None
+    revenue_at_risk: Optional[int] = None
 
 
 class LeadScoreBreakdown(BaseModel):
@@ -55,11 +56,13 @@ class LeadScoreBreakdown(BaseModel):
 class LeadResponse(BaseModel):
     customer_id: str
     customer_name: str
+    name: Optional[str] = None  # Alias for frontend compatibility (lead.name)
     industry: str
     budget_band: str
     relationship_score: int
     last_contact_date: str
     total_score: float
+    score: Optional[float] = None  # Alias for frontend compatibility (lead.score)
     is_disqualified: bool = False
     disqualification_reason: Optional[str] = None
     breakdown: LeadScoreBreakdown
@@ -87,6 +90,9 @@ class PitchResponse(BaseModel):
     site_location: str
     customer_name: str
     quoted_rate_inr: int
+    suggested_rate: Optional[int] = None  # Alias for frontend compatibility (pitchData.suggested_rate)
     pitch_text: str
+    pitch: Optional[str] = None  # Alias for frontend compatibility (pitchData.pitch)
+    reasons: Optional[List[str]] = None  # Alias for frontend compatibility (pitchData.reasons)
     generated_by_ai: bool
     grounding_facts: Dict[str, Any]
