@@ -11,6 +11,7 @@ def test_health_endpoint():
     data = response.json()
     assert data["status"] == "healthy"
     assert data["datasets"]["hoardings_count"] == 25
+    assert data["datasets"]["customers_count"] == 20
 
 
 def test_vacancies_endpoint():
@@ -19,20 +20,20 @@ def test_vacancies_endpoint():
     vacancies = response.json()
     assert isinstance(vacancies, list)
     assert len(vacancies) > 0
-    # Confirm SITE_001 is present with correct free_from date
-    site_1 = next((v for v in vacancies if v["site_id"] == "SITE_001"), None)
-    assert site_1 is not None
-    assert site_1["free_from"] == "2026-09-01"
+    # Confirm HRD-103 is present with free_from date 2026-08-31
+    hrd_103 = next((v for v in vacancies if v["site_id"] == "HRD-103"), None)
+    assert hrd_103 is not None
+    assert hrd_103["free_from"] == "2026-08-31"
 
 
 def test_leads_endpoint():
-    response = client.get("/api/leads/SITE_001?ref_date=2026-08-08")
+    response = client.get("/api/leads/HRD-106?ref_date=2026-08-08")
     assert response.status_code == 200
     data = response.json()
-    assert data["site_id"] == "SITE_001"
-    assert len(data["leads"]) > 0
+    assert data["site_id"] == "HRD-106"
+    assert len(data["leads"]) == 20
 
-    # Ensure disqualified customer is ranked at bottom or marked disqualified
+    # Ensure top lead is qualified
     leads = data["leads"]
     top_lead = leads[0]
     assert top_lead["is_disqualified"] is False
@@ -41,16 +42,16 @@ def test_leads_endpoint():
 
 def test_pitch_endpoint():
     payload = {
-        "site_id": "SITE_001",
-        "customer_id": "CUST_001"
+        "site_id": "HRD-106",
+        "customer_id": "CUST-32"
     }
     response = client.post("/api/pitch?ref_date=2026-08-08", json=payload)
     assert response.status_code == 200
     data = response.json()
-    assert data["site_id"] == "SITE_001"
-    assert data["customer_id"] == "CUST_001"
-    assert data["quoted_rate_inr"] == 380000
+    assert data["site_id"] == "HRD-106"
+    assert data["customer_id"] == "CUST-32"
+    assert data["quoted_rate_inr"] == 400000
     assert "pitch_text" in data
     assert len(data["pitch_text"]) > 50
-    # Must quote exact site location and rate
-    assert "Bandra Flyover Junction" in data["pitch_text"] or "SITE_001" in data["pitch_text"] or "380,000" in data["pitch_text"]
+    # Must quote site location and rate
+    assert "Thane Ghodbunder" in data["pitch_text"] or "400,000" in data["pitch_text"]

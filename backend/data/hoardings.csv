@@ -1,26 +1,26 @@
 site_id,location,size_sqft,traffic_score,monthly_rate_inr
-SITE_001,Bandra Flyover Junction - SV Road,800,9.5,380000
-SITE_002,Western Express Highway - Andheri Flyover,1200,9.8,400000
-SITE_003,Marine Drive Promenade - Nariman Point,600,9.2,350000
-SITE_004,Lower Parel - Senapati Bapat Marg,900,9.0,320000
-SITE_005,Worli Sea Link Approach - South Bound,1000,9.4,360000
-SITE_006,Juhu Tara Road - Near JW Marriott,500,8.5,280000
-SITE_007,Linking Road - Khar West Shopping Hub,450,8.8,260000
-SITE_008,Goregaon East - Hub Mall Junction,800,8.2,240000
-SITE_009,Powai Hiranandani Gardens Main Gate,600,8.6,270000
-SITE_010,BKC G-Block Main Avenue,1000,9.6,390000
-SITE_011,Thane Eastern Express Highway - Nitin Junction,900,7.9,210000
-SITE_012,Vashi Toll Naka - Navi Mumbai Entrance,1100,8.4,230000
-SITE_013,Malad Link Road - Near Inorbit Mall,700,8.1,220000
-SITE_014,Dadar TT Circle - Central Junction,750,8.7,290000
-SITE_015,Chembur Diamond Garden Outer Ring,600,7.6,180000
-SITE_016,Ghatkopar LBS Marg - R City Mall Road,650,7.8,190000
-SITE_017,Borivali West - Shimpoli Signal,500,7.2,150000
-SITE_018,Kalyan Station Road Commercial Hub,600,6.9,130000
-SITE_019,Mulund West - LBS Marg Commercial Zone,550,7.4,160000
-SITE_020,SANTACRUZ Airport Domestic Terminal Exit,850,9.1,340000
-SITE_021,Prabhadevi Siddhivinayak Temple Signal,500,8.0,200000
-SITE_022,Kandivali East - Lokhandwala Township Gate,450,7.0,140000
-SITE_023,Mira Road Highway Junction,700,6.8,120000
-SITE_024,Sion Circle - Dr BA Road Flyover,800,8.3,250000
-SITE_025,Versova Metro Station Square,500,7.7,170000
+HRD-100,Kandivali Flyover WEB,1200,6.4,180000
+HRD-101,Andheri Metro Facing,1200,7.1,120000
+HRD-102,SV Road Junction Borivali,600,7.4,180000
+HRD-103,WEH Goregaon North,400,8.0,250000
+HRD-104,Link Road Malad,400,9.4,250000
+HRD-105,Dahisar Toll Naka,400,8.1,120000
+HRD-106,Thane Ghodbunder Rd,800,8.3,400000
+HRD-107,BKC Approach,400,9.8,250000
+HRD-108,Sion Circle,800,8.2,120000
+HRD-109,Powai Hiranandani,1200,9.8,400000
+HRD-110,Kandivali Flyover WEB #2,1200,6.2,120000
+HRD-111,Andheri Metro Facing #2,400,7.1,180000
+HRD-112,SV Road Junction Borivali #2,600,9.2,180000
+HRD-113,WEH Goregaon North #2,400,7.3,120000
+HRD-114,Link Road Malad #2,400,7.4,120000
+HRD-115,Dahisar Toll Naka #2,800,5.9,250000
+HRD-116,Thane Ghodbunder Rd #2,600,8.3,120000
+HRD-117,BKC Approach #2,800,9.1,250000
+HRD-118,Sion Circle #2,600,9.4,250000
+HRD-119,Powai Hiranandani #2,400,9.5,400000
+HRD-120,Kandivali Flyover WEB #3,1200,9.1,120000
+HRD-121,Andheri Metro Facing #3,400,6.3,180000
+HRD-122,SV Road Junction Borivali #3,800,5.9,400000
+HRD-123,WEH Goregaon North #3,400,6.7,180000
+HRD-124,Link Road Malad #3,1200,6.2,120000

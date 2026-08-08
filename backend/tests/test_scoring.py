@@ -11,9 +11,9 @@ def test_hard_budget_constraint():
     hoardings, customers, bookings = load_all_datasets(DATA_DIR)
     ref_date = "2026-08-08"
 
-    # SITE_001 is high rate band (₹380,000/mo)
+    # HRD-106 is high rate band (₹400,000/mo)
     score_result = calculate_lead_scores(
-        site_id="SITE_001",
+        site_id="HRD-106",
         hoardings_df=hoardings,
         customers_df=customers,
         bookings_df=bookings,
@@ -24,14 +24,14 @@ def test_hard_budget_constraint():
     leads = score_result["leads"]
     assert len(leads) > 0
 
-    # Find CUST_018 (Local Organic Mart - budget_band: low)
-    low_budget_lead = next(l for l in leads if l["customer_id"] == "CUST_018")
+    # Find CUST-34 (Apex Coaching - budget_band: low)
+    low_budget_lead = next(l for l in leads if l["customer_id"] == "CUST-34")
     assert low_budget_lead["is_disqualified"] is True
     assert low_budget_lead["total_score"] == 0.0
     assert "Disqualified" in low_budget_lead["disqualification_reason"]
     assert len(low_budget_lead["reasons"]) > 0
 
-    # Top leads for SITE_001 MUST NOT be disqualified
+    # Top leads for HRD-106 MUST NOT be disqualified
     top_lead = leads[0]
     assert top_lead["is_disqualified"] is False
     assert top_lead["total_score"] > 0
@@ -43,7 +43,7 @@ def test_explicit_reasons_and_breakdown():
     ref_date = "2026-08-08"
 
     score_result = calculate_lead_scores(
-        site_id="SITE_001",
+        site_id="HRD-106",
         hoardings_df=hoardings,
         customers_df=customers,
         bookings_df=bookings,
@@ -64,15 +64,15 @@ def test_incumbent_customer_flagging():
     hoardings, customers, bookings = load_all_datasets(DATA_DIR)
     ref_date = "2026-08-08"
 
-    # SITE_001 incumbent is CUST_001 (Raymond)
+    # HRD-106 incumbent occupant is CUST-32 (GreenLeaf Realty)
     score_result = calculate_lead_scores(
-        site_id="SITE_001",
+        site_id="HRD-106",
         hoardings_df=hoardings,
         customers_df=customers,
         bookings_df=bookings,
         reference_date_str=ref_date
     )
 
-    raymond_lead = next(l for l in score_result["leads"] if l["customer_id"] == "CUST_001")
-    assert raymond_lead["incumbent_status"] is True
-    assert any("CURRENT INCUMBENT" in r for r in raymond_lead["reasons"])
+    incumbent_lead = next(l for l in score_result["leads"] if l["customer_id"] == "CUST-32")
+    assert incumbent_lead["incumbent_status"] is True
+    assert any("CURRENT INCUMBENT" in r for r in incumbent_lead["reasons"])

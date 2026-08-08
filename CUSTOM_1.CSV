@@ -1,0 +1,21 @@
+customer_id,name,industry,budget_band,relationship_score,last_contact_date
+CUST-30,SunGold Jewellers,retail,mid,6,2026-05-24
+CUST-31,Metro Motors,real_estate,mid,3,2026-03-29
+CUST-32,GreenLeaf Realty,fmcg,mid,3,2026-05-25
+CUST-33,FreshKart FMCG,automotive,mid,3,2026-01-30
+CUST-34,Apex Coaching,education,low,4,2026-07-06
+CUST-35,CarePlus Hospitals,healthcare,low,4,2026-03-23
+CUST-36,Volt Electronics,jewellery,high,2,2026-07-16
+CUST-37,UrbanNest Homes,electronics,low,2,2026-02-25
+CUST-38,Prime Autos,retail,high,7,2026-04-28
+CUST-39,DailyBasket,real_estate,low,5,2026-03-20
+CUST-40,Shine Jewels,fmcg,high,5,2026-07-11
+CUST-41,EduSmart Academy,automotive,high,4,2026-03-21
+CUST-42,MediTrust Labs,education,low,8,2026-06-30
+CUST-43,PixelWorld TV,healthcare,mid,4,2026-03-13
+CUST-44,SkyHigh Realty,jewellery,low,7,2026-04-16
+CUST-45,SpiceRoute Foods,electronics,low,5,2026-03-11
+CUST-46,TrendWear Retail,retail,low,4,2026-03-17
+CUST-47,NovaBikes,real_estate,mid,9,2026-03-09
+CUST-48,BrightFuture Edu,fmcg,low,9,2026-04-01
+CUST-49,ZenCare Clinics,automotive,high,7,2026-03-31

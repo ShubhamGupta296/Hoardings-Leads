@@ -1,0 +1,26 @@
+site_id,location,size_sqft,traffic_score,monthly_rate_inr
+HRD-100,Kandivali Flyover WEB,1200,6.4,180000
+HRD-101,Andheri Metro Facing,1200,7.1,120000
+HRD-102,SV Road Junction Borivali,600,7.4,180000
+HRD-103,WEH Goregaon North,400,8.0,250000
+HRD-104,Link Road Malad,400,9.4,250000
+HRD-105,Dahisar Toll Naka,400,8.1,120000
+HRD-106,Thane Ghodbunder Rd,800,8.3,400000
+HRD-107,BKC Approach,400,9.8,250000
+HRD-108,Sion Circle,800,8.2,120000
+HRD-109,Powai Hiranandani,1200,9.8,400000
+HRD-110,Kandivali Flyover WEB #2,1200,6.2,120000
+HRD-111,Andheri Metro Facing #2,400,7.1,180000
+HRD-112,SV Road Junction Borivali #2,600,9.2,180000
+HRD-113,WEH Goregaon North #2,400,7.3,120000
+HRD-114,Link Road Malad #2,400,7.4,120000
+HRD-115,Dahisar Toll Naka #2,800,5.9,250000
+HRD-116,Thane Ghodbunder Rd #2,600,8.3,120000
+HRD-117,BKC Approach #2,800,9.1,250000
+HRD-118,Sion Circle #2,600,9.4,250000
+HRD-119,Powai Hiranandani #2,400,9.5,400000
+HRD-120,Kandivali Flyover WEB #3,1200,9.1,120000
+HRD-121,Andheri Metro Facing #3,400,6.3,180000
+HRD-122,SV Road Junction Borivali #3,800,5.9,400000
+HRD-123,WEH Goregaon North #3,400,6.7,180000
+HRD-124,Link Road Malad #3,1200,6.2,120000

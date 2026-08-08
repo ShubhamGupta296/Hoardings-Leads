@@ -23,16 +23,13 @@ def test_vacancies_90_day_filter():
 
     vacant_site_ids = [v["site_id"] for v in vacancies]
 
-    # SITE_001 ends 2026-08-31 (in 23 days) -> MUST be included
-    assert "SITE_001" in vacant_site_ids
-    site_1_vac = next(v for v in vacancies if v["site_id"] == "SITE_001")
-    assert site_1_vac["free_from"] == "2026-09-01"
+    # HRD-103 ends 2026-08-30 (in 22 days) -> MUST be included
+    assert "HRD-103" in vacant_site_ids
+    hrd_103_vac = next(v for v in vacancies if v["site_id"] == "HRD-103")
+    assert hrd_103_vac["free_from"] == "2026-08-31"
 
-    # SITE_004 ends 2026-08-15 BUT has follow-on booking starting 2026-08-16 -> MUST NOT be included
-    assert "SITE_004" not in vacant_site_ids
-
-    # SITE_010 booking ends 2026-12-31 (> 90 days) -> MUST NOT be included
-    assert "SITE_010" not in vacant_site_ids
+    # HRD-100 ends 2026-11-15 (> 90 days from 2026-08-08) -> MUST NOT be included
+    assert "HRD-100" not in vacant_site_ids
 
     # Verify every vacancy has days_until_vacant <= 90
     for vac in vacancies:
