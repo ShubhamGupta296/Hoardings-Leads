@@ -28,6 +28,20 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/", summary="Root Welcome & API Index")
+def root_index():
+    return {
+        "message": "Welcome to Smart Leads Agent for Hoardings API!",
+        "documentation": "/docs",
+        "health_check": "/api/health",
+        "endpoints": {
+            "vacancies": "/api/vacancies",
+            "leads_for_site": "/api/leads/{site_id}",
+            "generate_pitch": "/api/pitch [POST]"
+        }
+    }
+
+
 
 @app.get("/api/health", summary="System Health & Dataset Status")
 def health_check():
