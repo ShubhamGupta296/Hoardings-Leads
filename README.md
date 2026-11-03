@@ -169,7 +169,50 @@ python -m uvicorn app.main:app --reload --app-dir backend
 ```
 Access interactive API docs at `http://127.0.0.1:8000/docs`.
 
-### 3. Run Automated Tests
+### 3. Run Automated Tests & Evals
 ```bash
-PYTHONPATH=backend pytest backend/tests -v
+# Install development and evaluation dependencies
+pip install -r backend/requirements-dev.txt
+
+# Run Core API & Unit Tests
+PYTHONPATH=backend pytest backend/tests -v -p no:deepeval
+
+# Run Pitch Quality, Groundedness & Safety Evaluation Suite
+PYTHONPATH=backend pytest backend/evals -v -p no:deepeval
+
+# Export Postman collection from OpenAPI
+PYTHONPATH=backend python backend/evals/export_postman.py
 ```
+
+---
+
+## Testing & Quality Evaluation Framework
+
+The repository includes a dedicated LLM evaluation layer located in `backend/evals/`:
+
+### 1. Golden Dataset (`backend/evals/golden_dataset.json`)
+- 30 test cases derived from real billboard sites (`hoardings.csv`), corporate accounts (`customers.csv`), and past bookings (`bookings.csv`).
+- Covers a balanced distribution across high, mid, and low rate tiers, budget alignments, and incumbent renewals.
+- Reproducible via `python backend/evals/build_golden.py`.
+
+### 2. Deterministic Groundedness Evaluation (`backend/evals/test_pitch_quality.py`)
+- **Rate Check:** Verifies that every currency claim in the pitch matches the exact rate card from the CSV.
+- **Fact Check:** Validates display dimensions, eyeball traffic score, customer name, and location.
+- **Invented Number Check:** Flags unauthorized numeric figures and hallucinations.
+- **DeepEval Integration:** Evaluates Faithfulness and Hallucination metrics using Claude 3.5 Sonnet as the judge model when `ANTHROPIC_API_KEY` is provided.
+
+### 3. Safety & Security Suite (`backend/evals/test_pitch_safety.py`)
+- **Prompt Injection Resilience:** Tests 6 adversarial injection patterns in customer metadata (e.g., rate overrides, bargain jailbreaks, SQL syntax injections). Modifies in-memory DataFrames only and asserts that rate card integrity is strictly preserved.
+- **PII Leak Detection:** Asserts no ungrounded telephone numbers or personal email addresses appear in generated drafts.
+
+### 4. Quality & Cost Tracking (`backend/evals/tracker.py`)
+- Logs latency (ms), token consumption, estimated USD cost, and pass/fail metrics to `backend/evals/results/runs.csv`.
+- Exports summary evaluation reports to `backend/evals/results/<timestamp>_<mode>.json`.
+
+### 5. Metric Definitions
+| Metric | Definition | Benchmark Target |
+|--------|------------|------------------|
+| **Hallucination Rate** | Percentage of pitches with at least one ungrounded fact or rate claim | `0.0%` (Template) / `<5.0%` (Claude) |
+| **Pass Rate** | Percentage of pitches passing rate, fact, and security assertions | `100.0%` |
+| **Groundedness Score** | Scale from 0.0 to 1.0 assessing factual fidelity against ground truth | `1.0` / 1.0 |
+| **Average Latency** | Time taken in milliseconds to synthesize proposal | `<100 ms` (Template) / `<3000 ms` (Claude) |

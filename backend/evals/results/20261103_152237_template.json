@@ -1,0 +1,583 @@
+{
+  "timestamp": "2026-11-03T15:22:37.979713+00:00",
+  "mode": "template",
+  "total_cases": 30,
+  "passed_cases": 30,
+  "pass_rate_pct": 100.0,
+  "hallucinated_cases": 0,
+  "hallucination_rate_pct": 0.0,
+  "avg_groundedness_score": 1.0,
+  "avg_latency_ms": 34.65,
+  "results": [
+    {
+      "case_id": "CASE_001",
+      "site_id": "HRD-100",
+      "customer_id": "CUST-48",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        180000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 55.700200027786195,
+      "pitch_length": 1266
+    },
+    {
+      "case_id": "CASE_002",
+      "site_id": "HRD-101",
+      "customer_id": "CUST-36",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        120000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 66.93049997556955,
+      "pitch_length": 1233
+    },
+    {
+      "case_id": "CASE_003",
+      "site_id": "HRD-102",
+      "customer_id": "CUST-33",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        180000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 51.47109995596111,
+      "pitch_length": 1238
+    },
+    {
+      "case_id": "CASE_004",
+      "site_id": "HRD-103",
+      "customer_id": "CUST-35",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        250000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 51.316799945198,
+      "pitch_length": 1233
+    },
+    {
+      "case_id": "CASE_005",
+      "site_id": "HRD-104",
+      "customer_id": "CUST-41",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        250000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 58.41469997540116,
+      "pitch_length": 1196
+    },
+    {
+      "case_id": "CASE_006",
+      "site_id": "HRD-105",
+      "customer_id": "CUST-30",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        120000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 48.45310002565384,
+      "pitch_length": 1226
+    },
+    {
+      "case_id": "CASE_007",
+      "site_id": "HRD-106",
+      "customer_id": "CUST-32",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 35.583000048063695,
+      "pitch_length": 1230
+    },
+    {
+      "case_id": "CASE_008",
+      "site_id": "HRD-107",
+      "customer_id": "CUST-36",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        250000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 53.484999923966825,
+      "pitch_length": 1207
+    },
+    {
+      "case_id": "CASE_009",
+      "site_id": "HRD-108",
+      "customer_id": "CUST-45",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        120000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 37.11609996389598,
+      "pitch_length": 1224
+    },
+    {
+      "case_id": "CASE_010",
+      "site_id": "HRD-109",
+      "customer_id": "CUST-40",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 27.869899990037084,
+      "pitch_length": 1210
+    },
+    {
+      "case_id": "CASE_011",
+      "site_id": "HRD-106",
+      "customer_id": "CUST-36",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 28.805900015868247,
+      "pitch_length": 1279
+    },
+    {
+      "case_id": "CASE_012",
+      "site_id": "HRD-106",
+      "customer_id": "CUST-38",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 28.691499959677458,
+      "pitch_length": 1233
+    },
+    {
+      "case_id": "CASE_013",
+      "site_id": "HRD-106",
+      "customer_id": "CUST-40",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 28.344999998807907,
+      "pitch_length": 1255
+    },
+    {
+      "case_id": "CASE_014",
+      "site_id": "HRD-106",
+      "customer_id": "CUST-41",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 29.307199991308153,
+      "pitch_length": 1235
+    },
+    {
+      "case_id": "CASE_015",
+      "site_id": "HRD-106",
+      "customer_id": "CUST-49",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 25.89270006865263,
+      "pitch_length": 1231
+    },
+    {
+      "case_id": "CASE_016",
+      "site_id": "HRD-109",
+      "customer_id": "CUST-36",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 23.69229996111244,
+      "pitch_length": 1249
+    },
+    {
+      "case_id": "CASE_017",
+      "site_id": "HRD-109",
+      "customer_id": "CUST-38",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 35.38599994499236,
+      "pitch_length": 1203
+    },
+    {
+      "case_id": "CASE_018",
+      "site_id": "HRD-109",
+      "customer_id": "CUST-41",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 24.01380008086562,
+      "pitch_length": 1231
+    },
+    {
+      "case_id": "CASE_019",
+      "site_id": "HRD-109",
+      "customer_id": "CUST-49",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 27.886399999260902,
+      "pitch_length": 1227
+    },
+    {
+      "case_id": "CASE_020",
+      "site_id": "HRD-119",
+      "customer_id": "CUST-36",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 23.277899948880076,
+      "pitch_length": 1256
+    },
+    {
+      "case_id": "CASE_021",
+      "site_id": "HRD-119",
+      "customer_id": "CUST-38",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 24.002299993298948,
+      "pitch_length": 1210
+    },
+    {
+      "case_id": "CASE_022",
+      "site_id": "HRD-119",
+      "customer_id": "CUST-40",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 28.67530006915331,
+      "pitch_length": 1232
+    },
+    {
+      "case_id": "CASE_023",
+      "site_id": "HRD-119",
+      "customer_id": "CUST-41",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 23.49960000719875,
+      "pitch_length": 1238
+    },
+    {
+      "case_id": "CASE_024",
+      "site_id": "HRD-119",
+      "customer_id": "CUST-49",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 23.488900042138994,
+      "pitch_length": 1234
+    },
+    {
+      "case_id": "CASE_025",
+      "site_id": "HRD-122",
+      "customer_id": "CUST-36",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 26.60219999961555,
+      "pitch_length": 1280
+    },
+    {
+      "case_id": "CASE_026",
+      "site_id": "HRD-122",
+      "customer_id": "CUST-38",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 27.647200040519238,
+      "pitch_length": 1234
+    },
+    {
+      "case_id": "CASE_027",
+      "site_id": "HRD-122",
+      "customer_id": "CUST-40",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 23.296400089748204,
+      "pitch_length": 1256
+    },
+    {
+      "case_id": "CASE_028",
+      "site_id": "HRD-122",
+      "customer_id": "CUST-41",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 30.596400029025972,
+      "pitch_length": 1262
+    },
+    {
+      "case_id": "CASE_029",
+      "site_id": "HRD-122",
+      "customer_id": "CUST-49",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 31.089300056919456,
+      "pitch_length": 1258
+    },
+    {
+      "case_id": "CASE_030",
+      "site_id": "HRD-106",
+      "customer_id": "CUST-30",
+      "passed": true,
+      "groundedness_score": 1.0,
+      "has_hallucination": false,
+      "rate_check_passed": true,
+      "fact_check_passed": true,
+      "invented_numbers_passed": true,
+      "found_rates": [
+        400000
+      ],
+      "hallucinations": [],
+      "errors": [],
+      "generated_by_ai": false,
+      "latency_ms": 38.91120001208037,
+      "pitch_length": 1235
+    }
+  ]
+}

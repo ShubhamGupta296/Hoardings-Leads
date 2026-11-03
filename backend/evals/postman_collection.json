@@ -1,0 +1,165 @@
+{
+  "info": {
+    "name": "Smart Leads Agent for Hoardings API",
+    "description": "Backend API for detecting upcoming billboard vacancies, scoring best-fit lead customers with explicit reasons, and generating grounded pitch offers.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "System Health & Dataset Status",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "health"
+          ]
+        },
+        "description": "System Health & Dataset Status"
+      },
+      "response": []
+    },
+    {
+      "name": "Detect Upcoming Vacancies (Next 90 Days)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/vacancies",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "vacancies"
+          ],
+          "query": [
+            {
+              "key": "max_days",
+              "value": "90",
+              "description": "Vacancy lookahead window in days"
+            },
+            {
+              "key": "ref_date",
+              "value": "2026-08-08",
+              "description": "Reference date (YYYY-MM-DD) for window calculation"
+            }
+          ]
+        },
+        "description": "Returns all hoarding sites with bookings ending in the next `max_days` (default 90)\nthat have no follow-on booking scheduled."
+      },
+      "response": []
+    },
+    {
+      "name": "Rank Best-Fit Lead Customers for a Site",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/leads/{site_id}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "leads",
+            ":site_id"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "",
+              "description": "Limit number of leads returned"
+            },
+            {
+              "key": "include_disqualified",
+              "value": "True",
+              "description": "Whether to include hard-disqualified customers at bottom"
+            },
+            {
+              "key": "ref_date",
+              "value": "2026-08-08",
+              "description": "Reference date (YYYY-MM-DD)"
+            }
+          ],
+          "variable": [
+            {
+              "key": "site_id",
+              "value": "HRD-106",
+              "description": ""
+            }
+          ]
+        },
+        "description": "Ranks customers for a specific vacant site using 6 weighted scoring factors.\nEnforces HARD BUDGET CONSTRAINT: Customers whose budget band is 2+ levels below the site rate band\nare hard-disqualified with total_score = 0.\nEvery lead includes explicit, human-readable reason strings."
+      },
+      "response": []
+    },
+    {
+      "name": "Generate Personalised Pitch Offer",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/pitch",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "pitch"
+          ],
+          "query": [
+            {
+              "key": "ref_date",
+              "value": "2026-08-08",
+              "description": "Reference date (YYYY-MM-DD)"
+            }
+          ]
+        },
+        "description": "Generates a personalized B2B sales pitch offer for a lead customer and vacant site.\nStrictly grounded in site location, size, and rate card.\nUses Anthropic Claude API if ANTHROPIC_API_KEY is configured, or templated generator fallback.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"site_id\": \"HRD-106\",\n  \"customer_id\": \"CUST-38\"\n}"
+        }
+      },
+      "response": []
+    }
+  ]
+}

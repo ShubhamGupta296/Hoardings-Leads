@@ -1,0 +1,40 @@
+name: Quality & LLM Evaluation CI
+
+on:
+  push:
+    branches: [ main, backend-work ]
+  pull_request:
+    branches: [ main, backend-work ]
+
+jobs:
+  test-and-eval:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+          pip install -r backend/requirements-dev.txt
+
+      - name: Run Core API & Unit Tests
+        env:
+          PYTHONPATH: backend
+        run: |
+          pytest backend/tests/ -v -p no:deepeval
+
+      - name: Run Pitch Quality & Safety Evals (Deterministic)
+        env:
+          PYTHONPATH: backend
+          DEEPEVAL_TELEMETRY_OPT_OUT: "YES"
+        run: |
+          pytest backend/evals/ -v -p no:deepeval -k "not claude_mode and not deepeval"
